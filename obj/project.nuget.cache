@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "j+kCfKVKyWcs0BOBMp48s8kokjMf0R9jep2/iqxnQpmurXE6fJ9FjqvP9PGOyIA+e4f33pWiV+uTN6Wc73osKQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\avaldemoro\\Documents\\GameOfLifeApi2\\GameOfLifeApi2.csproj",
+  "expectedPackageFiles": [
+    "D:\\PackagesNuget\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
