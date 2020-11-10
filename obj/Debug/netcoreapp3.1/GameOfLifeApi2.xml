@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GameOfLifeApi2</name>
+    </assembly>
+    <members>
+        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.GetCurrentBoard">
+            <summary>
+            Get current board saved in memory.
+            </summary>
+            <response code="200">True, action completed successfully</response>
+        </member>
+        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.ObtainNextBoard">
+            <summary>
+            Advance one the current state of the board.
+            </summary>
+            <returns>A board with next state of Cells</returns>
+            <response code="200">True, action completed successfully</response>
+        </member>
+        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.SetBoard(GameOfLifeApi2.DataTransferObjects.BoardDTO)">
+             <summary>
+             Set Board in Memory
+             </summary>
+             <remarks>
+             Sample request:
+            
+                 POST /SetBoard
+                 {
+                    "table": [
+                        {
+                            "isAlive": true,
+                            "positionX": 0,
+                            "positionY": 0
+                        },
+                        {
+                            "isAlive": true,
+                           "positionX": 0,
+                           "positionY": 1
+                        }
+                   ]
+                }
+             </remarks>
+             <response code="200">True, action completed successfully</response>
+        </member>
+    </members>
+</doc>

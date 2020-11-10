@@ -1,6 +1,7 @@
 using System;
+using System.Reflection;
+using System.IO;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using GameOfLifeApi2.Repository;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.OpenApi.Models;
 
 
 namespace GameOfLifeApi2
@@ -30,11 +32,47 @@ namespace GameOfLifeApi2
             services.AddControllers();
             services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter() ));
             services.AddSingleton<ConserveBoard,ConserveBoardInMemory>();
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Version = "v1",
+                    Title = "GameOfLife API",
+                    Description = "An example of my implementaiton of Convoy's Game with ASP.NET Core Web API",
+                    TermsOfService = new Uri("https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"),
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Ana Valdemoro",
+                        Email = "ana.valdemoro101@alu.ulpgc.es",
+                       
+                    },
+                    License = new OpenApiLicense
+                    {
+                        Name = "Use under LICX",
+                        Url = new Uri("https://example.com/license"),
+                    }
+                });
+                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+                c.IncludeXmlComments(xmlPath);
+            });
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                c.RoutePrefix = string.Empty;
+            });
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
