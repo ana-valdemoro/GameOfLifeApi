@@ -55,11 +55,25 @@ namespace GameOfLifeApi2.Controllers
 
         }*/
         [HttpPost("{id}")]
-        public ActionResult<BoardDTO> InitializeBoard([FromBody] BoardDTO content)
+        public ActionResult<bool> InitializeBoard([FromBody] BoardDTO boardDTO)
         {
-             //ConserveBoardInMemory.Set(content);
-            //var boardResult = BoardToDTO(board);
-            return Ok(content);
+            var board = DTOtoBoard(boardDTO);
+            ConserveBoardInMemory.Set(board);
+            return true;
+        }
+
+        private static Board DTOtoBoard(BoardDTO boardDTO)
+        {
+            Board board = new Board();
+            foreach (CellDTO cellDTO in boardDTO.Table) board.Table.Add(DTOtoCell(cellDTO));
+
+            return board; 
+
+        }
+        private static Cell DTOtoCell(CellDTO cellDTO)
+        {
+            int[] coordinates = new int[] { cellDTO.PositionX, cellDTO.PositionY };
+            return new Cell(coordinates , cellDTO.IsAlive);
         }
 
         private static BoardDTO BoardToDTO(Board board)
@@ -74,6 +88,8 @@ namespace GameOfLifeApi2.Controllers
             new CellDTO
             {
                 IsAlive = cell.IsAlive,
+                PositionX = cell.PositionX,
+                PositionY = cell.PositionY
             };
     }
 }

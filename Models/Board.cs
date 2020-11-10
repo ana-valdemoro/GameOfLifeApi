@@ -31,6 +31,12 @@ namespace GameOfLifeApi2.Models
             }
 
         }
+
+        public Board()
+        {
+            Table = new List<Cell>();
+        }
+
         public Board Next_generation()
         {
             List<Cell> nextGeneration = this.Table.ConvertAll(cell => {
