@@ -26,7 +26,7 @@ namespace GameOfLifeApi2.Controllers
 
 
         [HttpGet]
-        public ActionResult<BoardDTO> Get()
+        public ActionResult<BoardDTO> GetCurrentBoard()
         {
             var board = ConserveBoardInMemory.Get();
             var boardResult = BoardToDTO(board);
@@ -36,7 +36,7 @@ namespace GameOfLifeApi2.Controllers
         }
 
         [HttpPost]
-        public ActionResult<String> Post()
+        public ActionResult<BoardDTO> ObtainNextBoard()
         {
             var board = ConserveBoardInMemory.Update();
             var boardResult = BoardToDTO(board);
@@ -54,10 +54,17 @@ namespace GameOfLifeApi2.Controllers
             //Json configuration = JsonConvert.SerializeObject(content);
 
         }*/
+        [HttpPost("{id}")]
+        public ActionResult<BoardDTO> InitializeBoard([FromBody] BoardDTO content)
+        {
+             //ConserveBoardInMemory.Set(content);
+            //var boardResult = BoardToDTO(board);
+            return Ok(content);
+        }
 
-         private static BoardDTO BoardToDTO(Board board)
+        private static BoardDTO BoardToDTO(Board board)
          {
-            BoardDTO boardDTO = new BoardDTO() { Table = new List<CellDTO>() };   
+            BoardDTO boardDTO = new BoardDTO { Table = new List<CellDTO>() };   
             foreach (Cell cell in board.Table) boardDTO.Table.Add(CellToDTO(cell));
             return boardDTO;
          }
@@ -66,7 +73,7 @@ namespace GameOfLifeApi2.Controllers
         private static CellDTO CellToDTO(Cell cell) =>
             new CellDTO
             {
-                isAlive = cell.isAlive,
+                IsAlive = cell.IsAlive,
             };
     }
 }

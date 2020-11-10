@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 namespace GameOfLifeApi2.DataTransferObjects
 {
     public class CellDTO{
-        public Boolean isAlive { set; get; }
-       
+        public Boolean IsAlive { set; get; }
+        public int PositionX { set; get; }
+        public int PositionY { set; get; }
+
     }
 }

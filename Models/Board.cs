@@ -35,12 +35,12 @@ namespace GameOfLifeApi2.Models
         {
             List<Cell> nextGeneration = this.Table.ConvertAll(cell => {
                 int[] coordinates = new int[] { cell.PositionX, cell.PositionY };
-                return new Cell(coordinates, cell.isAlive);
+                return new Cell(coordinates, cell.IsAlive);
             });
             foreach (Cell cell in nextGeneration)
             {
                 int aliveNeighbours = CountAliveNeighbours(this.Table, cell);
-                cell.isAlive = UpdateCellStatus(cell, aliveNeighbours);
+                cell.IsAlive = UpdateCellStatus(cell, aliveNeighbours);
 
             }
             Table = nextGeneration;
@@ -49,7 +49,7 @@ namespace GameOfLifeApi2.Models
 
         private static bool UpdateCellStatus(Cell cell, int aliveNeighbours)
         {
-            if (cell.isAlive)
+            if (cell.IsAlive)
             {
                 if (aliveNeighbours < 2 | aliveNeighbours > 3) return false;
 
@@ -58,7 +58,7 @@ namespace GameOfLifeApi2.Models
             {
                 if (aliveNeighbours == 3) return true;
             }
-            return cell.isAlive;
+            return cell.IsAlive;
         }
 
         public static int CountAliveNeighbours(List<Cell> initial_table, Cell cell)
@@ -81,7 +81,7 @@ namespace GameOfLifeApi2.Models
         {
             int aliveNeighbours = 0;
             Cell result = initial_table.Find(cell2 => (cell2.PositionX == positionX && cell2.PositionY == positionY));
-            if (result != null && result.isAlive) aliveNeighbours++;
+            if (result != null && result.IsAlive) aliveNeighbours++;
             return aliveNeighbours;
         }
 
