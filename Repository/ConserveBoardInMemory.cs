@@ -8,7 +8,7 @@ namespace GameOfLifeApi2.Repository
 {
     public class ConserveBoardInMemory : ConserveBoard
     {
-        private Board Board;
+        private static  Board  Board;
 
         public ConserveBoardInMemory()
         {

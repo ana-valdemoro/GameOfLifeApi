@@ -34,7 +34,7 @@ namespace GameOfLifeApi2.Models
         public Board Next_generation()
         {
             List<Cell> nextGeneration = this.Table.ConvertAll(cell => {
-                int[] coordinates = new int[] { cell.positionX, cell.positionY };
+                int[] coordinates = new int[] { cell.PositionX, cell.PositionY };
                 return new Cell(coordinates, cell.isAlive);
             });
             foreach (Cell cell in nextGeneration)
@@ -65,14 +65,14 @@ namespace GameOfLifeApi2.Models
         {
             int aliveNeighbours = 0;
 
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX, cell.positionY + 1);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX, cell.positionY - 1);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX + 1, cell.positionY);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX - 1, cell.positionY);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX + 1, cell.positionY + 1);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX - 1, cell.positionY + 1);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX + 1, cell.positionY - 1);
-            aliveNeighbours += CountNeighbours(initial_table, cell.positionX - 1, cell.positionY - 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX, cell.PositionY + 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX, cell.PositionY - 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX + 1, cell.PositionY);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX - 1, cell.PositionY);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX + 1, cell.PositionY + 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX - 1, cell.PositionY + 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX + 1, cell.PositionY - 1);
+            aliveNeighbours += CountNeighbours(initial_table, cell.PositionX - 1, cell.PositionY - 1);
 
             return aliveNeighbours;
         }
@@ -80,7 +80,7 @@ namespace GameOfLifeApi2.Models
         public static int CountNeighbours(List<Cell> initial_table, int positionX, int positionY)
         {
             int aliveNeighbours = 0;
-            Cell result = initial_table.Find(cell2 => (cell2.positionX == positionX && cell2.positionY == positionY));
+            Cell result = initial_table.Find(cell2 => (cell2.PositionX == positionX && cell2.PositionY == positionY));
             if (result != null && result.isAlive) aliveNeighbours++;
             return aliveNeighbours;
         }

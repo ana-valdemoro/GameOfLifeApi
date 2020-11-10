@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using GameOfLifeApi2.DataTransferObjects;
 using GameOfLifeApi2.Models;
 using GameOfLifeApi2.Repository;
 using GameOfLifeAPI2.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
+//using Newtonsoft.Json;
 
 namespace GameOfLifeApi2.Controllers
 {
@@ -25,22 +26,24 @@ namespace GameOfLifeApi2.Controllers
 
 
         [HttpGet]
-        public ActionResult<String> Get()
+        public ActionResult<BoardDTO> Get()
         {
-            string board = JsonConvert.SerializeObject(ConserveBoardInMemory.Get());
-            return Ok(board);
-            
+            var board = ConserveBoardInMemory.Get();
+            var boardResult = BoardToDTO(board);
+            return Ok(boardResult);
+
 
         }
 
         [HttpPost]
         public ActionResult<String> Post()
         {
-            string board = JsonConvert.SerializeObject(ConserveBoardInMemory.Update());
-            return Ok(board);
+            var board = ConserveBoardInMemory.Update();
+            var boardResult = BoardToDTO(board);
+            return Ok(boardResult);
         }
 
-        [HttpPost("{id}")]
+        /*[HttpPost("{id}")]
         [Consumes("text/plain")]
         public string JsonStringBody([FromBody] string content)
         {
@@ -50,7 +53,22 @@ namespace GameOfLifeApi2.Controllers
             return "pepa";
             //Json configuration = JsonConvert.SerializeObject(content);
 
-        }
+        }*/
 
+         private static BoardDTO BoardToDTO(Board board)
+         {
+            BoardDTO boardDTO = new BoardDTO() { Table = new List<CellDTO>() };   
+            foreach (Cell cell in board.Table) boardDTO.Table.Add(CellToDTO(cell));
+            return boardDTO;
+         }
+
+
+        private static CellDTO CellToDTO(Cell cell) =>
+            new CellDTO
+            {
+                isAlive = cell.isAlive,
+            };
     }
 }
+
+
