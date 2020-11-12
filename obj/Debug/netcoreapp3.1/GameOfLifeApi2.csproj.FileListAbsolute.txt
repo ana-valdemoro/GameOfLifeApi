@@ -7,6 +7,7 @@ C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeA
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeApi2.runtimeconfig.dev.json
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeApi2.dll
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeApi2.pdb
+C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeApi2.xml
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csprojAssemblyReference.cache
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.AssemblyInfoInputs.cache
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.AssemblyInfo.cs
@@ -14,10 +15,9 @@ C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeA
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\staticwebassets\GameOfLifeApi2.StaticWebAssets.Manifest.cache
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\staticwebassets\GameOfLifeApi2.StaticWebAssets.xml
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.dll
+C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.xml
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.pdb
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.genruntimeconfig.cache
-C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
-C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csproj.CopyComplete
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\Microsoft.OpenApi.dll
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.Swagger.dll
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\Swashbuckle.AspNetCore.SwaggerGen.dll
@@ -25,5 +25,4 @@ C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\Swashbuckle
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csproj.CoreCompileInputs.cache
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\avaldemoro\Documents\GameOfLifeApi2\bin\Debug\netcoreapp3.1\GameOfLifeApi2.xml
-C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.xml
+C:\Users\avaldemoro\Documents\GameOfLifeApi2\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csproj.CopyComplete

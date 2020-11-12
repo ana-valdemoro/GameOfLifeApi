@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using GameOfLifeApi2.DataTransferObjects;
 using GameOfLifeApi2.Models;
 using GameOfLifeApi2.Repository;
@@ -10,15 +8,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GameOfLifeApi2.Controllers
 {
-    [Route("api/GameOfLife")]
+    [Route("api/Board")]
     [Produces("application/json")]
     [ApiController]
-    public class GameOfLifeController : ControllerBase
+    public class BoardController : ControllerBase
     {
-        //public static Board InitialBoard = new Board(new int[,] { { 1, 1 } });
         public ConserveBoard ConserveBoardInMemory;
 
-        public GameOfLifeController(ConserveBoard board)
+        public BoardController(ConserveBoard board)
         {
             ConserveBoardInMemory = board;
         }
@@ -27,11 +24,13 @@ namespace GameOfLifeApi2.Controllers
         /// Get current board saved in memory.
         /// </summary>
         /// <response code="200">Action completed successfully</response>
+        /// <response code="404">Board not found</response>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<BoardDTO> GetCurrentBoard()
         {
             var board = ConserveBoardInMemory.Get();
+            if (board == null) return NotFound("Board was not found in memory");
             var boardResult = BoardToDTO(board);
             return Ok(boardResult);
 
@@ -74,14 +73,18 @@ namespace GameOfLifeApi2.Controllers
         ///    }
         /// </remarks>
         /// <response code="200">True, action completed successfully</response>
-        [Route("[action]")]
-        [HttpPost]
+        /// <response code="400">Bad request</response>
+        [Consumes("application/json")] 
+        [HttpPost("[action]")]
         [ProducesResponseType(StatusCodes.Status200OK)]
-        public ActionResult<bool> SetBoard([FromBody] BoardDTO boardDTO)
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        public ActionResult<BoardDTO> SetBoard([FromBody] BoardDTO boardDTO)
         {
+            if(boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
             var board = DTOtoBoard(boardDTO);
             ConserveBoardInMemory.Set(board);
-            return Ok(true);
+            var ResultBoardDTO = BoardToDTO(ConserveBoardInMemory.Get());
+            return Ok(ResultBoardDTO);
         }
 
         private static Board DTOtoBoard(BoardDTO boardDTO)

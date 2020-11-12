@@ -1,17 +1,12 @@
 using System;
 using System.Reflection;
 using System.IO;
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using GameOfLifeApi2.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 
@@ -38,7 +33,7 @@ namespace GameOfLifeApi2
                 {
                     Version = "v1",
                     Title = "GameOfLife API",
-                    Description = "An example of my implementaiton of Convoy's Game with ASP.NET Core Web API",
+                    Description = "An example of my implementation of Convoy's Game with ASP.NET Core Web API",
                     TermsOfService = new Uri("https://en.wikipedia.org/wiki/Conway%27s_Game_of_Life"),
                     Contact = new OpenApiContact
                     {
@@ -62,11 +57,8 @@ namespace GameOfLifeApi2
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            // Enable middleware to serve generated Swagger as a JSON endpoint.
-            app.UseSwagger();
 
-            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
-            // specifying the Swagger JSON endpoint.
+            app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");

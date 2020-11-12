@@ -10,7 +10,7 @@
         "projectUniqueName": "C:\\Users\\avaldemoro\\Documents\\GameOfLifeApi2\\GameOfLifeApi2.csproj",
         "projectName": "GameOfLifeApi2",
         "projectPath": "C:\\Users\\avaldemoro\\Documents\\GameOfLifeApi2\\GameOfLifeApi2.csproj",
-        "packagesPath": "D:\\PackagesNuget",
+        "packagesPath": "C:\\Users\\avaldemoro\\.nuget\\packages",
         "outputPath": "C:\\Users\\avaldemoro\\Documents\\GameOfLifeApi2\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
@@ -41,10 +41,6 @@
       "frameworks": {
         "netcoreapp3.1": {
           "dependencies": {
-            "Newtonsoft.Json": {
-              "target": "Package",
-              "version": "[12.0.3, )"
-            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[5.6.3, )"

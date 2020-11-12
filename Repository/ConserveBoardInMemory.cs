@@ -10,10 +10,10 @@ namespace GameOfLifeApi2.Repository
     {
         private static  Board  Board;
 
-        public ConserveBoardInMemory()
-        {
-            Board = new Board(new int[,] { { 1, 1 } });
-        }
+        //public ConserveBoardInMemory()
+        //{
+        //    Board = new Board();
+        //}
         public Board Get()
         {
             return Board;
@@ -21,9 +21,7 @@ namespace GameOfLifeApi2.Repository
 
         public void Set(Board newBoard)
         {
-            Board = newBoard;
-            //Board = new Board(newBoard);
-          
+            Board = newBoard;         
         }
 
         public Board Update()

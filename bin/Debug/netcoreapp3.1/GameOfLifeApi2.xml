@@ -4,20 +4,21 @@
         <name>GameOfLifeApi2</name>
     </assembly>
     <members>
-        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.GetCurrentBoard">
+        <member name="M:GameOfLifeApi2.Controllers.BoardController.GetCurrentBoard">
             <summary>
             Get current board saved in memory.
             </summary>
-            <response code="200">True, action completed successfully</response>
+            <response code="200">Action completed successfully</response>
+            <response code="404">Board not found</response>
         </member>
-        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.ObtainNextBoard">
+        <member name="M:GameOfLifeApi2.Controllers.BoardController.ObtainNextBoard">
             <summary>
             Advance one the current state of the board.
             </summary>
             <returns>A board with next state of Cells</returns>
-            <response code="200">True, action completed successfully</response>
+            <response code="200">Action completed successfully</response>
         </member>
-        <member name="M:GameOfLifeApi2.Controllers.GameOfLifeController.SetBoard(GameOfLifeApi2.DataTransferObjects.BoardDTO)">
+        <member name="M:GameOfLifeApi2.Controllers.BoardController.SetBoard(GameOfLifeApi2.DataTransferObjects.BoardDTO)">
              <summary>
              Set Board in Memory
              </summary>
@@ -41,6 +42,7 @@
                 }
              </remarks>
              <response code="200">True, action completed successfully</response>
+             <response code="400">Bad request</response>
         </member>
     </members>
 </doc>
