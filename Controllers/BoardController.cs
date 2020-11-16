@@ -23,9 +23,10 @@ namespace GameOfLifeApi2.Controllers
         /// Get current board saved in memory.
         /// </summary>
         /// <response code="200">Action completed successfully</response>
-        /// <response code="404">Board not found</response>
+        /// <response code="404">Board not founded</response>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<BoardDTO> GetCurrentBoard()
         {
             var board = ConserveBoardInMemory.Get();

@@ -25,8 +25,7 @@ namespace GameOfLifeApi2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter() ));
-            services.AddSingleton<ConserveBoard,ConserveBoardInMemory>();
+            services.AddSingleton<ConserveBoard, ConserveBoardInMemory>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo
@@ -51,7 +50,8 @@ namespace GameOfLifeApi2
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-            
+            services.AddHealthChecks();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -79,6 +79,7 @@ namespace GameOfLifeApi2
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapHealthChecks("/health");
             });
         }
     }

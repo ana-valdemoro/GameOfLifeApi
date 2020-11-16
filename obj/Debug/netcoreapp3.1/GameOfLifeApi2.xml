@@ -9,7 +9,7 @@
             Get current board saved in memory.
             </summary>
             <response code="200">Action completed successfully</response>
-            <response code="404">Board not found</response>
+            <response code="404">Board not founded</response>
         </member>
         <member name="M:GameOfLifeApi2.Controllers.BoardController.ObtainNextBoard">
             <summary>
