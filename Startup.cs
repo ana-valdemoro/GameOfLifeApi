@@ -25,7 +25,7 @@ namespace GameOfLifeApi2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter() ));
+            //services.AddMvc(o => o.InputFormatters.Insert(0, new RawRequestBodyFormatter() ));
             services.AddSingleton<ConserveBoard,ConserveBoardInMemory>();
             services.AddSwaggerGen(c =>
             {
