@@ -1,7 +1,7 @@
 using System;
 using System.Reflection;
 using System.IO;
-using GameOfLifeApi2.Repository;
+using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

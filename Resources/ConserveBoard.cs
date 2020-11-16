@@ -1,10 +1,6 @@
 ﻿using GameOfLifeApi2.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace GameOfLifeApi2.Repository
+namespace GameOfLifeApi2.Resources
 {
     public interface ConserveBoard
     {

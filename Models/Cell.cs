@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 
-namespace GameOfLifeAPI2.Models {
+namespace GameOfLifeApi2.Models {
 
     public class Cell
     {

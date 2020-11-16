@@ -4,16 +4,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace GameOfLifeApi2.Repository
+namespace GameOfLifeApi2.Resources
 {
     public class ConserveBoardInMemory : ConserveBoard
     {
         private static  Board  Board;
 
-        //public ConserveBoardInMemory()
-        //{
-        //    Board = new Board();
-        //}
         public Board Get()
         {
             return Board;
