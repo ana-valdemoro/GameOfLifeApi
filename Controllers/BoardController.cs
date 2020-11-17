@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using GameOfLifeApi2.DataTransferObjects;
-using GameOfLifeApi2.Models;
+﻿using GameOfLifeApi2.DataTransferObjects;
 using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -12,9 +10,9 @@ namespace GameOfLifeApi2.Controllers
     [ApiController]
     public class BoardController : ControllerBase
     {
-        public ConserveBoard ConserveBoardInMemory;
+        public IConserveBoard ConserveBoardInMemory;
 
-        public BoardController(ConserveBoard board)
+        public BoardController(IConserveBoard board)
         {
             ConserveBoardInMemory = board;
         }

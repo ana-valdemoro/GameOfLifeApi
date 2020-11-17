@@ -25,7 +25,7 @@ namespace GameOfLifeApi2
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            services.AddSingleton<ConserveBoard, ConserveBoardInMemory>();
+            services.AddSingleton<IConserveBoard, ConserveBoardInMemory>();
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo

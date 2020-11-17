@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GameOfLifeApi2.Resources
 {
-    public class ConserveBoardInMemory : ConserveBoard
+    public class ConserveBoardInMemory : IConserveBoard
     {
         private static  Board  Board;
 
