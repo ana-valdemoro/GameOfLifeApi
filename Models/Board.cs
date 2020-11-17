@@ -6,7 +6,7 @@ namespace GameOfLifeApi2.Models
     public class Board
     {
 
-        public List<Cell> Table { set; get; }
+        private List<Cell> Table;
 
         public Board(int[,] values)
         {
@@ -94,5 +94,9 @@ namespace GameOfLifeApi2.Models
             return boardDTO;
         }
 
+        public void AddCell(Cell cell)
+        {
+            Table.Add(cell);
+        }
     }
 }

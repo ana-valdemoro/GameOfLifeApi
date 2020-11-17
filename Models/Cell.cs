@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using GameOfLifeApi2.DataTransferObjects;
 
 
@@ -20,9 +19,9 @@ namespace GameOfLifeApi2.Models {
         public CellDTO ToDTO() =>
             new CellDTO
             {
-                IsAlive = this.IsAlive,
-                PositionX = this.PositionX,
-                PositionY = this.PositionY
+                IsAlive = IsAlive,
+                PositionX = PositionX,
+                PositionY = PositionY
             };
 
     }

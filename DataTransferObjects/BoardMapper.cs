@@ -6,13 +6,12 @@ using System.Threading.Tasks;
 
 namespace GameOfLifeApi2.DataTransferObjects
 {
-    public class BoardMapper
+    public static class BoardMapper
     {
         public static Board DTOtoBoard(BoardDTO boardDTO)
         {
             Board board = new Board();
-            foreach (CellDTO cellDTO in boardDTO.Table) board.Table.Add(DTOtoCell(cellDTO));
-
+            foreach (CellDTO cellDTO in boardDTO.Table) board.AddCell(DTOtoCell(cellDTO));
             return board;
 
         }
