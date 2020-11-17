@@ -29,7 +29,7 @@ namespace GameOfLifeApi2.Controllers
         {
             var board = ConserveBoardInMemory.Get();
             if (board == null) return NotFound("Board was not found in memory");
-            var boardResult = BoardMapper.BoardToDTO(board);
+            var boardResult = board.ToDTO();
             return Ok(boardResult);
 
 
@@ -44,7 +44,7 @@ namespace GameOfLifeApi2.Controllers
         public ActionResult<BoardDTO> ObtainNextBoard()
         {
             var board = ConserveBoardInMemory.Update();
-            var boardResult = BoardMapper.BoardToDTO(board);
+            var boardResult = board.ToDTO();
             return Ok(boardResult);
         }
 
@@ -81,7 +81,7 @@ namespace GameOfLifeApi2.Controllers
             if(boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
             var board = BoardMapper.DTOtoBoard(boardDTO);
             ConserveBoardInMemory.Set(board);
-            var ResultBoardDTO = BoardMapper.BoardToDTO(ConserveBoardInMemory.Get());
+            var ResultBoardDTO = ConserveBoardInMemory.Get().ToDTO();
             return Ok(ResultBoardDTO);
         }
 

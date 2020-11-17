@@ -22,20 +22,5 @@ namespace GameOfLifeApi2.DataTransferObjects
             return new Cell(coordinates, cellDTO.IsAlive);
         }
 
-        public static BoardDTO BoardToDTO(Board board)
-        {
-            BoardDTO boardDTO = new BoardDTO { Table = new List<CellDTO>() };
-            foreach (Cell cell in board.Table) boardDTO.Table.Add(CellToDTO(cell));
-            return boardDTO;
-        }
-
-
-        public static CellDTO CellToDTO(Cell cell) =>
-            new CellDTO
-            {
-                IsAlive = cell.IsAlive,
-                PositionX = cell.PositionX,
-                PositionY = cell.PositionY
-            };
     }
 }

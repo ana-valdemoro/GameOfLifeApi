@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using GameOfLifeApi2.DataTransferObjects;
 
 namespace GameOfLifeApi2.Models
 {
@@ -85,6 +86,12 @@ namespace GameOfLifeApi2.Models
             Cell result = initial_table.Find(cell2 => (cell2.PositionX == positionX && cell2.PositionY == positionY));
             if (result != null && result.IsAlive) aliveNeighbours++;
             return aliveNeighbours;
+        }
+        public BoardDTO ToDTO()
+        {
+            BoardDTO boardDTO = new BoardDTO { Table = new List<CellDTO>() };
+            foreach (Cell cell in Table) boardDTO.Table.Add(cell.ToDTO());
+            return boardDTO;
         }
 
     }
