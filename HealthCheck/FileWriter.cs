@@ -1,14 +1,13 @@
 ﻿using System;
 using System.IO;
 using GameOfLifeApi2.Models;
-using System.Text.Json;
 
 namespace GameOfLifeApi2.Resources
 {
-    public class FileWriter
+    public static class FileWriter
     {
      
-        public static void WriteTimeStamp(Board board)
+        public static void WriteBoardLog(Board board)
         {
             string result;
             if (board == null)
@@ -17,21 +16,21 @@ namespace GameOfLifeApi2.Resources
             }
             else
             {
-                result = JsonSerializer.Serialize(board);
+                result =board.ToString();
             }
-            string path = @"C:\Users\avaldemoro\Documents\GameOfLifeApi2\history.txt";
+            string path = @"C:\Users\avaldemoro\Documents\GameOfLifeApi2\boardLog.txt";
             if (!File.Exists(path))
             {
 
                 using (StreamWriter sw = new StreamWriter(path))
                 {
-                    sw.WriteLine(DateTime.Today.ToString("g") + " " + result);
+                    sw.WriteLine(DateTime.Now.ToString("g") + " " + result);
                 }
             }else{
                 using (StreamWriter sw = File.AppendText(path))
                 {
                     sw.WriteLine(DateTime.Now.ToString("g") + " " + result);
-                }
+                }   
             }
 
             

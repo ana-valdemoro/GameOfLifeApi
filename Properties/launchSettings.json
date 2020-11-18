@@ -20,7 +20,7 @@
     "GameOfLifeApi2": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "weatherforecast",
+      "launchUrl": "api/Board",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },

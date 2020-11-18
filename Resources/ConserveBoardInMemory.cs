@@ -13,14 +13,13 @@ namespace GameOfLifeApi2.Resources
 
         public Board Get()
         {
-            FileWriter.WriteTimeStamp(Board);
             return Board;
         }
 
-        public void Set(Board newBoard)
+        public Board Set(Board newBoard)
         {
             Board = newBoard;
-            FileWriter.WriteTimeStamp(Board);
+            return Board;
         }
 
         public Board Update()

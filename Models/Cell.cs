@@ -24,6 +24,10 @@ namespace GameOfLifeApi2.Models {
                 PositionY = PositionY
             };
 
+        public override string ToString()
+        {
+            return "{IsAlive:"+IsAlive.ToString()+",PositionX:" +PositionX.ToString()+ ",PositionY:"+PositionY.ToString()+"}";
+        }
     }
     
 }

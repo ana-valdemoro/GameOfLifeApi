@@ -94,9 +94,19 @@ namespace GameOfLifeApi2.Models
             return boardDTO;
         }
 
-        public void AddCell(Cell cell)
+        protected internal void AddCell(Cell cell)
         {
             Table.Add(cell);
+        }
+        public override string ToString()
+        {
+            string boardResult = "Table:[";
+
+            foreach (Cell cell in Table)
+            {
+                boardResult += cell.ToString() + ",";
+            }
+            return boardResult.Substring(0,boardResult.Length-1)+"]";
         }
     }
 }

@@ -4,7 +4,7 @@ namespace GameOfLifeApi2.Resources
 {
     public interface IConserveBoard
     {
-        public void Set(Board newBoard);
+        public Board Set(Board newBoard);
         public Board Get();
         public Board Update();
     }

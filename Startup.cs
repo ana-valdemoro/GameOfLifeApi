@@ -1,6 +1,7 @@
 using System;
 using System.Reflection;
 using System.IO;
+using GameOfLifeApi2.HealthCheck;
 using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -50,7 +51,8 @@ namespace GameOfLifeApi2
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
-            services.AddHealthChecks();
+            services.AddHealthChecks()
+                    .AddCheck<FileHealthCheck>("File_health_check");
 
         }
 

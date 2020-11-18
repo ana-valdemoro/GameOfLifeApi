@@ -80,8 +80,7 @@ namespace GameOfLifeApi2.Controllers
         {
             if(boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
             var board = BoardMapper.DTOtoBoard(boardDTO);
-            ConserveBoardInMemory.Set(board);
-            var ResultBoardDTO = ConserveBoardInMemory.Get().ToDTO();
+            var ResultBoardDTO = ConserveBoardInMemory.Set(board).ToDTO();
             return Ok(ResultBoardDTO);
         }
 
