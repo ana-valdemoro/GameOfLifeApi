@@ -1,9 +1,4 @@
-﻿using GameOfLifeApi2.Models;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using GameOfLife.Models;
 
 namespace GameOfLifeApi2.Resources
 {
@@ -24,8 +19,8 @@ namespace GameOfLifeApi2.Resources
 
         public Board Update()
         {
-            Board.Next_generation();
-            FileWriter.WriteTimeStamp(Board);
+            Board.NextGeneration();
+            FileWriter.WriteBoardLog(Board);
             return Board;
 
         }

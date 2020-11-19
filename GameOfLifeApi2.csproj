@@ -15,4 +15,9 @@
 	  <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
 	</ItemGroup>
 
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\GameOfLife.csproj" />
+	</ItemGroup>
+
 </Project>

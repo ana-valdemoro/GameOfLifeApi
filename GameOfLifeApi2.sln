@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameOfLifeApi2", "GameOfLifeApi2.csproj", "{A8179F9D-6A3D-43C9-8496-58F5D6449AB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOfLifeApi2", "GameOfLifeApi2.csproj", "{A8179F9D-6A3D-43C9-8496-58F5D6449AB0}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOfLife.Tests", "..\..\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife.Tests\GameOfLife.Tests.csproj", "{BFD7E6A1-C763-425E-90A8-4FD80E96AC3A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GameOfLife", "..\..\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\GameOfLife.csproj", "{2C98BA5B-A319-458A-B0D9-88AD49D8061D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{A8179F9D-6A3D-43C9-8496-58F5D6449AB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A8179F9D-6A3D-43C9-8496-58F5D6449AB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A8179F9D-6A3D-43C9-8496-58F5D6449AB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BFD7E6A1-C763-425E-90A8-4FD80E96AC3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BFD7E6A1-C763-425E-90A8-4FD80E96AC3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BFD7E6A1-C763-425E-90A8-4FD80E96AC3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BFD7E6A1-C763-425E-90A8-4FD80E96AC3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C98BA5B-A319-458A-B0D9-88AD49D8061D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C98BA5B-A319-458A-B0D9-88AD49D8061D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C98BA5B-A319-458A-B0D9-88AD49D8061D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C98BA5B-A319-458A-B0D9-88AD49D8061D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

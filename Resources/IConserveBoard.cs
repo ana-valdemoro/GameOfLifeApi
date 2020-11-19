@@ -1,4 +1,4 @@
-﻿using GameOfLifeApi2.Models;
+﻿using GameOfLife.Models;
 
 namespace GameOfLifeApi2.Resources
 {

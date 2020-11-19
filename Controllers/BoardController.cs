@@ -1,4 +1,4 @@
-﻿using GameOfLifeApi2.DataTransferObjects;
+﻿using GameOfLife.DataTransferObjects;
 using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;

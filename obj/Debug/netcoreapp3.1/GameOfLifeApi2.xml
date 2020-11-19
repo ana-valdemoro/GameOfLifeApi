@@ -18,7 +18,7 @@
             <returns>A board with next state of Cells</returns>
             <response code="200">Action completed successfully</response>
         </member>
-        <member name="M:GameOfLifeApi2.Controllers.BoardController.SetBoard(GameOfLifeApi2.DataTransferObjects.BoardDTO)">
+        <member name="M:GameOfLifeApi2.Controllers.BoardController.SetBoard(GameOfLife.DataTransferObjects.BoardDTO)">
              <summary>
              Set Board in Memory
              </summary>
