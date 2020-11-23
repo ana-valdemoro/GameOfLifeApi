@@ -1,0 +1,46 @@
+# ASP.NET Core (.NET Framework)
+# Build and test ASP.NET Core projects targeting the full .NET Framework.
+# Add steps that publish symbols, save build artifacts, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/dotnet-core
+
+trigger:
+  branches:
+    include:
+      - master 
+  paths:
+    exclude:
+      - README.md
+      - azure-pipelines.yml
+
+pool:
+  name: 'Aida'
+
+
+steps:
+
+- task: UseDotNet@2
+  displayName: use sdk 3.1.x version
+  inputs: 
+    packageType: runtime
+    version: 3.1.4
+
+- task: DotNetCoreCLI@2
+  displayName: build
+  inputs: 
+    command: build
+    projects: 'GameOfLifeApi2.sln'
+
+- task:  DotNetCoreCLI@2
+  displayName: test
+  inputs:
+    command: test
+    projects: 'GameOfLife.Tests\GameOfLife.Tests.csproj'
+    arguments: '--no-restore --no-build'
+
+- task:  DotNetCoreCLI@2
+  displayName: publish
+  inputs:
+    command: test
+    publishWebProjects: True
+    arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
+    zipAfterPublish: True
