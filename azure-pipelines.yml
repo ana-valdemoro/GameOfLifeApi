@@ -28,7 +28,7 @@ steps:
   displayName: build
   inputs: 
     command: build
-    projects: 'GameOfLifeApi2'
+    projects: 'GameOfLifeApi2.sln'
 
 - task:  DotNetCoreCLI@2
   displayName: test
