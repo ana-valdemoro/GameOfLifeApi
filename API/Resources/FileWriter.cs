@@ -6,7 +6,6 @@ namespace GameOfLifeApi2.Resources
 {
     public static class FileWriter
     {
-     
         public static void WriteBoardLog(Board board)
         {
             string result;
