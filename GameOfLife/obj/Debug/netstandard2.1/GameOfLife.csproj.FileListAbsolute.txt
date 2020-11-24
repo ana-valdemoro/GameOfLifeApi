@@ -1,0 +1,4 @@
+C:\Users\avaldemoro\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.csprojAssemblyReference.cache
+C:\Users\avaldemoro\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.AssemblyInfoInputs.cache
+C:\Users\avaldemoro\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.AssemblyInfo.cs
+C:\Users\avaldemoro\Downloads\Kata-Game-Of-Life-master\C#\GameOfLife\obj\Debug\netstandard2.1\GameOfLife.csproj.CoreCompileInputs.cache
