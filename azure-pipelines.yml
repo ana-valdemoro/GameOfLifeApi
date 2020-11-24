@@ -28,19 +28,19 @@ steps:
   displayName: build
   inputs: 
     command: build
-    projects: 'GameOfLifeApi2.sln'
+    projects: 'GameOfLifeApi2'
 
 - task:  DotNetCoreCLI@2
   displayName: test
   inputs:
     command: test
-    projects: 'GameOfLife.Tests\GameOfLife.Tests.csproj'
+    projects: 'GameOfLife.Tests/GameOfLife.Tests.csproj '
     arguments: '--no-restore --no-build'
 
 - task:  DotNetCoreCLI@2
   displayName: publish
   inputs:
-    command: test
+    command: publish
     publishWebProjects: True
     arguments: '--configuration $(BuildConfiguration) --output $(Build.ArtifactStagingDirectory)'
     zipAfterPublish: True
