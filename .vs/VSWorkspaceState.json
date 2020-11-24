@@ -1,7 +1,11 @@
 {
   "ExpandedNodes": [
     "",
-    "\\GameOfLife.Tests"
+    "\\API",
+    "\\API\\Controllers",
+    "\\API\\HealthCheck",
+    "\\API\\Resources"
   ],
+  "SelectedNode": "\\GameOfLifeApi2.sln",
   "PreviewInSolutionExplorer": false
 }
