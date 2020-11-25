@@ -17,7 +17,7 @@ namespace GameOfLifeApi2.Resources
             {
                 result =board.ToString();
             }
-            string path = @"C:\Users\avaldemoro\Pictures\GameOfLifeApi\boardLog.txt";
+            string path = @"boardLog.txt";
             if (!File.Exists(path))
             {
 
