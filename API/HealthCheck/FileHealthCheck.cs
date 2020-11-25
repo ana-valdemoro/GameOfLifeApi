@@ -11,7 +11,7 @@ namespace GameOfLifeApi2.HealthCheck
             HealthCheckContext context, 
             CancellationToken cancellationToken = default(CancellationToken))
         {
-            string path = @"C:\Users\avaldemoro\Documents\GameOfLifeApi2\boardHistory.txt";
+            string path = @"boardLog.txt";
 
             if (File.Exists(path))
             {
@@ -25,7 +25,7 @@ namespace GameOfLifeApi2.HealthCheck
                 catch
                 {
                     return Task.FromResult(
-                        HealthCheckResult.Healthy("Unhealthy result: File exists but doesn't have read-write permissions"));
+                        HealthCheckResult.Unhealthy("Unhealthy result: File exists but doesn't have read-write permissions"));
                 }
  
             }
