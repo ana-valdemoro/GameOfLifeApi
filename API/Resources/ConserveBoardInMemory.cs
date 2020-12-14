@@ -1,10 +1,18 @@
 ﻿using GameOfLife.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace GameOfLifeApi2.Resources
 {
     public class ConserveBoardInMemory : IConserveBoard
     {
         private static  Board  Board;
+        private FileWriter fileWriter ;
+
+        public ConserveBoardInMemory(IConfiguration configuration)
+        {
+            
+            fileWriter = new FileWriter(configuration);
+        }
 
         public Board Get()
         {
@@ -20,7 +28,7 @@ namespace GameOfLifeApi2.Resources
         public Board Update()
         {
             Board.NextGeneration();
-            FileWriter.WriteBoardLog(Board);
+            fileWriter.WriteBoardLog(Board);
             return Board;
 
         }

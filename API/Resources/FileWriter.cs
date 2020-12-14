@@ -1,15 +1,21 @@
 ﻿using System;
 using System.IO;
 using GameOfLife.Models;
+using Microsoft.Extensions.Configuration;
 
 namespace GameOfLifeApi2.Resources
 {
-    public static class FileWriter
+    public  class FileWriter
     {
-        public static void WriteBoardLog(Board board)
+        public IConfiguration Configuration { get; }
+        public FileWriter(IConfiguration configuration)
+        {
+            Configuration = configuration;
+        }
+        public void WriteBoardLog(Board board)
         {
             string result;
-            if (board == null)
+            if(board == null)
             {
                 result = "Board is null";
             }
@@ -17,7 +23,7 @@ namespace GameOfLifeApi2.Resources
             {
                 result =board.ToString();
             }
-            string path = @"boardLog.txt";
+            string path = @Configuration["HealthCheck:FilePath"];
             if (!File.Exists(path))
             {
 

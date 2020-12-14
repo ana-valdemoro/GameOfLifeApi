@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 
 namespace GameOfLifeApi2
 {
     public class Program
     {
+       
         public static void Main(string[] args)
         {
            
