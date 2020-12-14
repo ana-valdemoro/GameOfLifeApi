@@ -15,6 +15,8 @@ trigger:
 pool:
   name: 'Aida'
 
+variables:
+  HealthCheck.FilePath: AzureBoardLog.txt
 
 steps:
 
@@ -29,6 +31,14 @@ steps:
   inputs: 
     command: build
     projects: 'GameOfLifeApi2.sln'
+
+- task: FileTransform@2
+  displayName: JSON Variable transformation
+  inputs: 
+    folderPath: '$(System.DefaultWorkingDirectory)/**/'
+    xmlTransformationRules: ''
+    jsonTargetFiles: '**/appsettings.json'
+    
 
 - task:  DotNetCoreCLI@2
   displayName: test
