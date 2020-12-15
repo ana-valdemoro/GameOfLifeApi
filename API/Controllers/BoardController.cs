@@ -47,7 +47,6 @@ namespace GameOfLifeApi2.Controllers
             var boardResult = board.ToDTO();
             return Ok(boardResult);
         }
-
         /// <summary>
         /// Set Board in Memory
         /// </summary>

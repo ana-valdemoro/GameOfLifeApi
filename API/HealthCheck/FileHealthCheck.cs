@@ -1,45 +1,51 @@
 ﻿using System.IO;
+using System.Security.AccessControl;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+
 
 namespace GameOfLifeApi2.HealthCheck
 {
     public class FileHealthCheck: IHealthCheck
     {
         public readonly IConfiguration Configuration;
+        public readonly string CurrentDirectory;
 
-        public FileHealthCheck(IConfiguration configuration)
-        {
+        public FileHealthCheck(IConfiguration configuration) {
             Configuration = configuration;
+            CurrentDirectory = Directory.GetCurrentDirectory();
         }
         public Task<HealthCheckResult> CheckHealthAsync(
             HealthCheckContext context, 
-            CancellationToken cancellationToken = default(CancellationToken))
-        {
-            string path = @Configuration["HealthCheck:FilePath"];
-
-            if (File.Exists(path))
+            CancellationToken cancellationToken = default(CancellationToken)) {
+            try
             {
-                try
-                {
-                    FileStream fs = File.Open(path, FileMode.Open);
-                    fs.Close();
-                    return Task.FromResult(
-                        HealthCheckResult.Healthy("A healthy result.File is accesible to read and write"));
-                }
+                return Task.FromResult(HasWritePermissionOnDirectory() ? 
+                    HealthCheckResult.Healthy("A healthy result.Folder is accessible to read and write") :
+                    HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
+            }
                 catch
                 {
                     return Task.FromResult(
-                        HealthCheckResult.Unhealthy("Unhealthy result: File exists but doesn't have read-write permissions"));
+                        HealthCheckResult.Unhealthy("Unhealthy result: There is an exception" ));
                 }
- 
+
+        }
+
+        public bool HasWritePermissionOnDirectory() {
+            var writeAllow = false;
+            DirectoryInfo dInfo = new DirectoryInfo(CurrentDirectory);
+            var accessControlList = dInfo.GetAccessControl();
+            var accessRules = accessControlList.GetAccessRules(true, true,
+                typeof(System.Security.Principal.SecurityIdentifier));
+            foreach (FileSystemAccessRule rule in accessRules) {
+                if ((FileSystemRights.Write & rule.FileSystemRights) != FileSystemRights.Write)
+                    continue;
+                if (rule.AccessControlType == AccessControlType.Allow) writeAllow = true;
             }
-            return Task.FromResult(
-                HealthCheckResult.Unhealthy("Unhealthy result: File doesn't exist."));
-
-
+            return writeAllow ;
         }
     }
 }
