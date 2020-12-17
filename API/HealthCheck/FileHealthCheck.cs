@@ -23,20 +23,13 @@ namespace GameOfLifeApi2.HealthCheck
             return Task.FromResult(HasWritePermissionOnDirectory() ? 
                 HealthCheckResult.Healthy("A healthy result.Folder is accessible to read and write") :
                 HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
-    
-
         }
 
         public bool HasWritePermissionOnDirectory() {
             var writeAllow = false;
-            DirectoryInfo dInfo = new DirectoryInfo(CurrentDirectory);
-            var accessControlList = dInfo.GetAccessControl();
-            var accessRules = accessControlList.GetAccessRules(true, true,
-                typeof(System.Security.Principal.SecurityIdentifier));
-            foreach (FileSystemAccessRule rule in accessRules) {
-                if ((FileSystemRights.Write & rule.FileSystemRights) != FileSystemRights.Write)
-                    continue;
-                if (rule.AccessControlType == AccessControlType.Allow) writeAllow = true;
+            FileInfo fileInfo = new FileInfo(CurrentDirectory);
+            if ((fileInfo.Attributes & FileAttributes.ReadOnly) != FileAttributes.ReadOnly) {
+                writeAllow = true;
             }
             return writeAllow ;
         }
