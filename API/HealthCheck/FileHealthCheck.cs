@@ -20,17 +20,10 @@ namespace GameOfLifeApi2.HealthCheck
         public Task<HealthCheckResult> CheckHealthAsync(
             HealthCheckContext context, 
             CancellationToken cancellationToken = default(CancellationToken)) {
-            try
-            {
-                return Task.FromResult(HasWritePermissionOnDirectory() ? 
-                    HealthCheckResult.Healthy("A healthy result.Folder is accessible to read and write") :
-                    HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
-            }
-            catch
-            {
-                    return Task.FromResult(
-                        HealthCheckResult.Unhealthy("Unhealthy result: There is an exception" ));
-            }
+            return Task.FromResult(HasWritePermissionOnDirectory() ? 
+                HealthCheckResult.Healthy("A healthy result.Folder is accessible to read and write") :
+                HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
+    
 
         }
 
