@@ -5043,6 +5043,7 @@
     ".NETCoreApp,Version=v3.1": [
       "GameOfLife >= 1.0.0",
       "Microsoft.ApplicationInsights.AspNetCore >= 2.16.0",
+      "Microsoft.Extensions.Logging.ApplicationInsights >= 2.16.0",
       "Newtonsoft.Json >= 12.0.3",
       "Swashbuckle.AspNetCore >= 5.6.3",
       "System.IO.FileSystem.AccessControl >= 5.0.0"
@@ -5094,6 +5095,10 @@
       "netcoreapp3.1": {
         "dependencies": {
           "Microsoft.ApplicationInsights.AspNetCore": {
+            "target": "Package",
+            "version": "[2.16.0, )"
+          },
+          "Microsoft.Extensions.Logging.ApplicationInsights": {
             "target": "Package",
             "version": "[2.16.0, )"
           },

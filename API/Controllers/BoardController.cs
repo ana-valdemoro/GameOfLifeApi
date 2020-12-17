@@ -2,19 +2,20 @@
 using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 
-namespace GameOfLifeApi2.Controllers
-{
+namespace GameOfLifeApi2.Controllers {
     [Route("api/Board")]
     [Produces("application/json")]
     [ApiController]
-    public class BoardController : ControllerBase
-    {
+    public class BoardController : ControllerBase {
         public IConserveBoard ConserveBoardInMemory;
+        private readonly ILogger Logger;
 
-        public BoardController(IConserveBoard board)
-        {
+
+        public BoardController(IConserveBoard board, ILogger<BoardController> logger) {
             ConserveBoardInMemory = board;
+            Logger = logger;
         }
 
         /// <summary>
@@ -27,6 +28,7 @@ namespace GameOfLifeApi2.Controllers
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<BoardDTO> GetCurrentBoard()
         {
+            Logger.LogInformation("Call to HTTP GET Method");
             var board = ConserveBoardInMemory.Get();
             if (board == null) return NotFound("Board was not found in memory");
             var boardResult = board.ToDTO();
@@ -43,6 +45,7 @@ namespace GameOfLifeApi2.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<BoardDTO> ObtainNextBoard()
         {
+            Logger.LogInformation("Call to HTTP Post Method");
             var board = ConserveBoardInMemory.Update();
             var boardResult = board.ToDTO();
             return Ok(boardResult);
@@ -77,7 +80,8 @@ namespace GameOfLifeApi2.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<BoardDTO> SetBoard([FromBody] BoardDTO boardDTO)
         {
-            if(boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
+            Logger.LogInformation("Call to HTTP Post Method in /SetBoard URL");
+            if (boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
             var board = BoardMapper.DTOtoBoard(boardDTO);
             var ResultBoardDTO = ConserveBoardInMemory.Set(board).ToDTO();
             return Ok(ResultBoardDTO);
