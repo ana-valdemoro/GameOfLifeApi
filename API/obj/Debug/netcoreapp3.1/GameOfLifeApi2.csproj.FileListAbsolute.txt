@@ -63,7 +63,4 @@ C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\bin\Debug\netcoreapp3.1\runtimes\
 C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Security.AccessControl.dll
 C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
 C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Security.Principal.Windows.dll
-C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csproj.CoreCompileInputs.cache
-C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\obj\Debug\netcoreapp3.1\GameOfLifeApi2.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\obj\Debug\netcoreapp3.1\GameOfLifeApi2.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\avaldemoro\Pictures\GameOfLifeApi\API\obj\Debug\netcoreapp3.1\GameOfLifeApi2.csprojAssemblyReference.cache

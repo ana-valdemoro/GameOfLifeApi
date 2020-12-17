@@ -53,6 +53,7 @@ namespace GameOfLifeApi2
             });
             services.AddHealthChecks()
                     .AddCheck<FileHealthCheck>("File_health_check");
+            services.AddApplicationInsightsTelemetry();
 
         }
 

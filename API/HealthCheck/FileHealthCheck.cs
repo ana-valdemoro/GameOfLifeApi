@@ -26,11 +26,11 @@ namespace GameOfLifeApi2.HealthCheck
                     HealthCheckResult.Healthy("A healthy result.Folder is accessible to read and write") :
                     HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
             }
-                catch
-                {
+            catch
+            {
                     return Task.FromResult(
                         HealthCheckResult.Unhealthy("Unhealthy result: There is an exception" ));
-                }
+            }
 
         }
 
