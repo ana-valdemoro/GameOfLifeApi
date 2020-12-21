@@ -32,10 +32,10 @@ namespace GameOfLifeApi2.HealthCheck {
 
         public bool HasWritePermissionOnDirectory() {
             var writeAllow = false;
-            FileIOPermission f2 = new FileIOPermission(FileIOPermissionAccess.Write, CurrentDirectory);
+            FileIOPermission directoryPermission = new FileIOPermission(FileIOPermissionAccess.Write, CurrentDirectory);
             try
             {
-                f2.Demand();
+                directoryPermission.Demand();
                 writeAllow = true;
                 Logger.LogInformation("El directorio actual tiene permisos");
             }
