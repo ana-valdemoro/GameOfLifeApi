@@ -3,6 +3,7 @@ using GameOfLifeApi2.Resources;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.ApplicationInsights;
 
 namespace GameOfLifeApi2.Controllers {
     [Route("api/Board")]
@@ -11,11 +12,14 @@ namespace GameOfLifeApi2.Controllers {
     public class BoardController : ControllerBase {
         public IConserveBoard ConserveBoardInMemory;
         private readonly ILogger Logger;
+        private TelemetryClient telemetry;
 
 
-        public BoardController(IConserveBoard board, ILogger<BoardController> logger) {
+
+        public BoardController(IConserveBoard board, ILogger<BoardController> logger, TelemetryClient telemetryClient) {
             ConserveBoardInMemory = board;
             Logger = logger;
+            telemetry = telemetryClient;
         }
 
         /// <summary>
@@ -28,6 +32,7 @@ namespace GameOfLifeApi2.Controllers {
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<BoardDTO> GetCurrentBoard()
         {
+            telemetry.TrackEvent("Custom HTTP GET method");
             Logger.LogInformation("Call to HTTP GET Method");
             var board = ConserveBoardInMemory.Get();
             if (board == null) return NotFound("Board was not found in memory");
@@ -45,6 +50,7 @@ namespace GameOfLifeApi2.Controllers {
         [ProducesResponseType(StatusCodes.Status200OK)]
         public ActionResult<BoardDTO> ObtainNextBoard()
         {
+            telemetry.TrackEvent("Custom HTTP Post method");
             Logger.LogInformation("Call to HTTP Post Method");
             var board = ConserveBoardInMemory.Update();
             var boardResult = board.ToDTO();
@@ -80,6 +86,7 @@ namespace GameOfLifeApi2.Controllers {
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public ActionResult<BoardDTO> SetBoard([FromBody] BoardDTO boardDTO)
         {
+            telemetry.TrackEvent("Custom HTTP Post Method in /SetBoard URL");
             Logger.LogInformation("Call to HTTP Post Method in /SetBoard URL");
             if (boardDTO == null || !ModelState.IsValid) return BadRequest("Board is null");
             var board = BoardMapper.DTOtoBoard(boardDTO);
