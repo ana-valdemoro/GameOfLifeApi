@@ -1,22 +1,24 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
+using System.Security;
 using System.Security.AccessControl;
+using System.Security.Permissions;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Logging;
 
-
-namespace GameOfLifeApi2.HealthCheck
-{
-    public class FileHealthCheck : IHealthCheck
-    {
+namespace GameOfLifeApi2.HealthCheck {
+    public class FileHealthCheck : IHealthCheck {
         public readonly IConfiguration Configuration;
         public readonly string CurrentDirectory;
+        private readonly ILogger Logger;
 
-        public FileHealthCheck(IConfiguration configuration)
-        {
+        public FileHealthCheck(IConfiguration configuration, ILogger<FileHealthCheck> logger) {
             Configuration = configuration;
             CurrentDirectory = Directory.GetCurrentDirectory();
+            Logger = logger;
         }
 
         public Task<HealthCheckResult> CheckHealthAsync(
@@ -28,22 +30,19 @@ namespace GameOfLifeApi2.HealthCheck
                 : HealthCheckResult.Unhealthy("Unhealthy result: Folder doesn't have write permissions"));
         }
 
-        public bool HasWritePermissionOnDirectory()
-        {
+        public bool HasWritePermissionOnDirectory() {
             var writeAllow = false;
-            //FileInfo fileInfo = new FileInfo(CurrentDirectory);
-            //if ((fileInfo.Attributes & FileAttributes.ReadOnly) != FileAttributes.ReadOnly) {
-            //    writeAllow = true;
-            //}
-            DirectoryInfo dInfo = new DirectoryInfo(CurrentDirectory);
-            DirectorySecurity accessControlList = dInfo.GetAccessControl();
-            var accessRules = accessControlList.GetAccessRules(true, true, 
-                typeof(System.Security.Principal.SecurityIdentifier));
-            foreach (FileSystemAccessRule rule in accessRules)
+
+            FileIOPermission f2 = new FileIOPermission(FileIOPermissionAccess.Write, CurrentDirectory);
+            try
             {
-                if ((FileSystemRights.Write & rule.FileSystemRights) != FileSystemRights.Write)
-                    continue;
-                if (rule.AccessControlType == AccessControlType.Allow) writeAllow = true;
+                f2.Demand();
+                writeAllow = true;
+                Logger.LogInformation("Parece que va flying");
+            }
+            catch (SecurityException s)
+            {
+                Logger.LogInformation(s.Message);
             }
             return writeAllow;
         }
